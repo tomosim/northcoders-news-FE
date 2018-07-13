@@ -86,7 +86,8 @@ class Comments extends Component {
         {this.state.comments.map((comment, index) => (
           <div key={comment._id} className="commentCard">
             <Votes
-              article={comment}
+              articleId={comment._id}
+              votes={comment.votes}
               id="comments"
               updateVotes={this.updateVotes}
             />

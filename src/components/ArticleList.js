@@ -27,28 +27,6 @@ class ArticleList extends Component {
     this.setState({ articles: articles });
   };
 
-  updateVotes = (_id, dir, type) => {
-    api.vote(_id, dir, type).then(() => {
-      this.fetchArticles();
-    });
-    const updatedArticleIndex = this.state.articles.findIndex(
-      article => article._id === _id
-    );
-    const updatedArticleList = [...this.state.articles];
-
-    dir === "up"
-      ? (updatedArticleList[updatedArticleIndex] = {
-          ...updatedArticleList[updatedArticleIndex],
-          votes: updatedArticleList[updatedArticleIndex].votes + 1
-        })
-      : (updatedArticleList[updatedArticleIndex] = {
-          ...updatedArticleList[updatedArticleIndex],
-          votes: updatedArticleList[updatedArticleIndex].votes - 1
-        });
-
-    this.setState({ articles: [...updatedArticleList] });
-  };
-
   render() {
     return (
       <div id="articleListBlock">
@@ -56,9 +34,9 @@ class ArticleList extends Component {
           {this.state.articles.map(article => (
             <div className="articleCard" key={article._id}>
               <Votes
-                article={article}
+                articleId={article._id}
+                votes={article.votes}
                 id="articles"
-                updateVotes={this.updateVotes}
               />
               <Link to={`/article/${article._id}`} className="articleTitle">
                 <h2 className="listCardTitles">{article.title}</h2>

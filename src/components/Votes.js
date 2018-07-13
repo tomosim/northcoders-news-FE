@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as api from "../api";
 
 class Votes extends Component {
   state = { votes: { up: 0, down: 0 } };
@@ -6,46 +7,51 @@ class Votes extends Component {
   handleVote = (article_id, dir) => {
     if (dir === "up") {
       if (this.state.votes.up === 0 && this.state.votes.down === 1) {
-        this.props.updateVotes(article_id, dir, this.props.id);
-        this.props.updateVotes(article_id, dir, this.props.id);
+        this.updateVotes(article_id, dir, this.props.id);
+        this.updateVotes(article_id, dir, this.props.id);
         this.setState({ votes: { up: 1, down: 0 } });
       } else if (this.state.votes.up === 0) {
-        this.props.updateVotes(article_id, dir, this.props.id);
+        this.updateVotes(article_id, dir, this.props.id);
         this.setState({ votes: { up: 1, down: 0 } });
       } else {
-        this.props.updateVotes(article_id, "down", this.props.id);
+        this.updateVotes(article_id, "down", this.props.id);
         this.setState({ votes: { up: 0, down: 0 } });
       }
     } else {
       if (this.state.votes.down === 0 && this.state.votes.up === 1) {
-        this.props.updateVotes(article_id, dir, this.props.id);
-        this.props.updateVotes(article_id, dir, this.props.id);
+        this.updateVotes(article_id, dir, this.props.id);
+        this.updateVotes(article_id, dir, this.props.id);
         this.setState({ votes: { up: 0, down: 1 } });
       } else if (this.state.votes.down === 0) {
-        this.props.updateVotes(article_id, dir, this.props.id);
+        this.updateVotes(article_id, dir, this.props.id);
         this.setState({ votes: { up: 0, down: 1 } });
       } else {
-        this.props.updateVotes(article_id, "up", this.props.id);
+        this.updateVotes(article_id, "up", this.props.id);
         this.setState({ votes: { up: 0, down: 0 } });
       }
     }
   };
 
+  updateVotes = (_id, dir, type) => {
+    api.vote(_id, dir, type);
+  };
+
   render() {
+    const addition = this.state.votes.up ? 1 : this.state.votes.down ? -1 : 0;
     return (
       <div className="votes">
         <h4
           className="voteButton"
           id="up"
-          onClick={e => this.handleVote(this.props.article._id, e.target.id)}
+          onClick={e => this.handleVote(this.props.articleId, e.target.id)}
         >
           ▲
         </h4>
-        <div className="voteNumber">{this.props.article.votes}</div>
+        <div className="voteNumber">{this.props.votes + addition}</div>
         <h4
           className="voteButton"
           id="down"
-          onClick={e => this.handleVote(this.props.article._id, e.target.id)}
+          onClick={e => this.handleVote(this.props.articleId, e.target.id)}
         >
           ▼
         </h4>

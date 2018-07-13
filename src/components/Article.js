@@ -16,33 +16,14 @@ class Article extends Component {
       .then(article => this.setState({ article: article }));
   };
 
-  updateVotes = (_id, dir, type) => {
-    api.vote(_id, dir, type).then(() => {
-      this.fetchArticle();
-    });
-
-    let updatedArticle = { ...this.state.article };
-
-    dir === "up"
-      ? (updatedArticle = {
-          ...updatedArticle,
-          votes: this.state.article.votes + 1
-        })
-      : (updatedArticle = {
-          ...updatedArticle,
-          votes: this.state.article.votes - 1
-        });
-
-    this.setState({ articles: updatedArticle });
-  };
-
   render() {
     return (
       <div id="articleListBlock">
         <div id="articleContainer">
           <div id="articleCard">
             <Votes
-              article={this.state.article}
+              articleId={this.state.article._id}
+              votes={this.state.article.votes}
               id="articles"
               updateVotes={this.updateVotes}
             />
