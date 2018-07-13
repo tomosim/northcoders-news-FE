@@ -90,14 +90,13 @@ p {
 
 .articleCard {
   display: grid;
-  grid-template-columns: 160px auto;
+  grid-template-columns: 140px auto;
   grid-template-rows: auto 50px;
   height: auto;
   max-width: 800px;
   background-color: rgb(250, 250, 250);
   padding: 5px 20px;
   padding-left: 0;
-
   box-shadow: 0 0 10px 0 rgb(209, 209, 209);
   margin: 10px 0;
 }
@@ -126,6 +125,19 @@ p {
   box-shadow: 1px 1px 5px 0 rgb(134, 134, 134);
   font-size: 16pt;
   color: white;
+}
+
+@media only screen and (max-width: 1200px) {
+  .articleCard {
+    display: grid;
+    grid-template-columns: 80px auto;
+  }
+
+  .voteNumber {
+    height: 36px;
+    width: 36px;
+    border-radius: 18px;
+  }
 }
 
 .voteButton {
@@ -252,6 +264,16 @@ p {
   margin: 10px 0;
 }
 
+@media only screen and (max-width: 1200px) {
+  #articleCard {
+    display: grid;
+    grid-template-columns: 80px auto;
+  }
+  .commentCard {
+    display: grid;
+    grid-template-columns: 80px auto 40px;
+  }
+}
 .menuBarItem {
   display: flex;
   flex-direction: column-reverse;
@@ -340,11 +362,6 @@ p {
     max-width: 800px;
     background-color: rgb(250, 250, 250);
     box-shadow: 0 0 10px 0 rgb(209, 209, 209);
-  }
-
-  #articleCard {
-    display: grid;
-    grid-template-columns: 100px auto;
   }
 
   #submitComment {
