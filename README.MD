@@ -25,6 +25,13 @@ In order to get the front end running you're going to need to use the [api](http
 To deploy the front end:
 `npm start`
 
+## To Do
+
+- Implement simple user addition
+- Login functionality
+- 404 redirect pages
+- More backend routes (e.g. add/delete user and edit articles/comments)
+
 ## Authors
 
 - **Tom Simmons**
