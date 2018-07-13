@@ -25,7 +25,7 @@ In order to get the front end running you're going to need to use the [api](http
 To deploy the front end:
 `npm start`
 
-##Authors
+## Authors
 
 - **Tom Simmons**
 

@@ -23,6 +23,7 @@ class App extends Component {
             <button>register</button>
           </div>
         </header>
+        {/* <main> */}
         <Route exact path="/" render={() => <ArticleList />} />
         <Route path="/topic/:topicslug" component={ArticleList} />
         <Route
@@ -34,6 +35,7 @@ class App extends Component {
         <div>
           <Topics />
         </div>
+        {/* </main> */}
       </div>
     );
   }

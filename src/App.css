@@ -20,6 +20,13 @@ p {
   overflow: hidden;
 }
 
+main {
+  display: flex;
+  flex-direction: row-reverse;
+
+  grid-template-columns: auto 350px;
+}
+
 /* @media only screen and (max-width: 1200px) {
   .App {
     height: 100vh;
