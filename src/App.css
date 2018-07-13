@@ -47,7 +47,7 @@ p {
   margin-left: 5px;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1150px) {
   .App {
     display: flex;
     flex-direction: column-reverse;
@@ -131,7 +131,7 @@ p {
   color: white;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1150px) {
   .articleCard {
     display: grid;
     grid-template-columns: 80px auto;
@@ -201,7 +201,7 @@ p {
   -webkit-transition: 0.2s;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1150px) {
   .sidebar {
     display: grid;
     grid-template-columns: auto auto;
@@ -259,6 +259,7 @@ p {
 
 #articleBody {
   padding-right: 10px;
+  height: 100%;
 }
 
 .commentCard {
@@ -274,7 +275,7 @@ p {
   margin: 10px 0;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1150px) {
   #articleCard {
     display: grid;
     grid-template-columns: 80px auto;
@@ -394,7 +395,7 @@ p {
   }
 
   #commentInput {
-    width: 400px;
+    width: 90%;
   }
 }
 
