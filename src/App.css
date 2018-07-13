@@ -23,6 +23,7 @@ p {
 #header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: white;
   padding: 0 4px;
   background-color: rgb(252, 112, 56);
@@ -32,12 +33,17 @@ p {
 }
 
 .title {
-  margin-top: -6px;
   letter-spacing: 2px;
   font-size: 46pt;
   font-weight: 100;
   font-style: italic;
   text-shadow: 3px 4px rgb(88, 194, 255);
+}
+
+#logo {
+  align-self: center;
+  height: 50px;
+  margin-left: 5px;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -56,7 +62,7 @@ p {
   }
 
   .title {
-    margin-top: 0;
+    margin-top: 15px;
     letter-spacing: 2px;
     font-size: 20pt;
     font-weight: 100;
@@ -67,17 +73,6 @@ p {
   h2 {
     margin: 5px 0;
   }
-
-  #sidebar {
-    display: hidden;
-    order: 2;
-  }
-}
-
-#logo {
-  align-self: center;
-  max-height: 90%;
-  margin-left: 5px;
 }
 
 #loginRegisterButtons {
@@ -177,13 +172,6 @@ p {
   box-shadow: 0 0 10px 0 rgb(209, 209, 209);
 }
 
-@media only screen and (max-width: 1200px) {
-  .sidebar {
-    width: auto;
-    margin: 0;
-  }
-}
-
 .topicButton {
   cursor: pointer;
   width: 100%;
@@ -195,6 +183,19 @@ p {
   color: rgb(252, 112, 56);
   transition: 0.2s;
   -webkit-transition: 0.2s;
+}
+
+@media only screen and (max-width: 1200px) {
+  .sidebar {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    width: auto;
+    margin: 0;
+  }
+  .topicButton {
+    border-right: thin lightgray solid;
+  }
 }
 
 .topicButton:hover {
