@@ -95,7 +95,7 @@ p {
 .articleCard {
   display: grid;
   grid-template-columns: 140px auto;
-  grid-template-rows: auto 50px;
+  grid-template-rows: auto 55px;
   height: auto;
   max-width: 800px;
   background-color: rgb(250, 250, 250);
@@ -209,6 +209,11 @@ p {
     width: auto;
     margin: 0;
   }
+
+  .sidebar.moved {
+    transform: translate(0, -40px);
+  }
+
   .topicButton {
     border-right: thin lightgray solid;
   }
@@ -405,4 +410,8 @@ p {
 
 #submitComment:hover {
   box-shadow: 3px 3px 10px 0 rgb(156, 156, 156);
+}
+
+#fourOhFour {
+  text-align: center;
 }

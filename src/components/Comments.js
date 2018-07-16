@@ -21,9 +21,10 @@ class Comments extends Component {
   }
 
   fetchComments = () => {
-    api
-      .fetchCommentsByArticle(this.props.article_id)
-      .then(comments => this.setState({ comments: comments }));
+    api.fetchCommentsByArticle(this.props.article_id).then(comments => {
+      this.setState({ comments: comments });
+      console.log(comments);
+    });
   };
 
   updateVotes = (_id, dir, type) => {

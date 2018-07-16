@@ -5,7 +5,7 @@ class PostComment extends Component {
     comment: {
       votes: 0,
       body: "",
-      created_by: this.props.currentUser,
+      created_by: this.props.currentUser._id,
       created_at: Date.now(),
       belongs_to: this.props.article_id
     }

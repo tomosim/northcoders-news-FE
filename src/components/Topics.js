@@ -3,19 +3,27 @@ import * as api from "../api";
 import { NavLink } from "react-router-dom";
 
 class Sidebar extends Component {
-  state = { topics: [] };
+  state = { topics: [], moved: "" };
 
   componentDidMount() {
     this.fetchTopics();
+    window.addEventListener("scroll", () => this.handleScroll());
   }
+
+  componentWillMount() {}
 
   fetchTopics = () => {
     api.fetchAllTopics().then(topics => this.setState({ topics: topics }));
   };
 
+  handleScroll = () => {
+    console.log("scroll");
+    // this.setState({ moved: "moved" });
+  };
+
   render() {
     return (
-      <div className="sidebar">
+      <div className="sidebar" id={this.state.moved}>
         <NavLink to={"/"} className="topicButton">
           <div>
             <h2>HOME</h2>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ArticleList from "./components/ArticleList";
 import Topics from "./components/Topics";
 import Article from "./components/Article";
+import FourOhFour from "./components/FourOhFour";
 import { Route, Link } from "react-router-dom";
 import "./App.css";
 import logo from "./assets/logo_orange.png";
@@ -26,12 +27,14 @@ class App extends Component {
 
         <Route exact path="/" render={() => <ArticleList />} />
         <Route path="/topic/:topicslug" component={ArticleList} />
+        <Route path="/404" component={FourOhFour} />
         <Route
           path="/article/:article_id"
           render={props => (
             <Article {...props} currentUser={this.state.currentUser} />
           )}
         />
+
         <div>
           <Topics />
         </div>
