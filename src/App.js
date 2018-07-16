@@ -3,9 +3,11 @@ import ArticleList from "./components/ArticleList";
 import Topics from "./components/Topics";
 import Article from "./components/Article";
 import FourOhFour from "./components/FourOhFour";
-import { Route, Link } from "react-router-dom";
+import Users from "./components/Users";
+import { Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import logo from "./assets/logo_orange.png";
+import MyContext from "./Context";
 
 class App extends Component {
   state = {
@@ -13,32 +15,39 @@ class App extends Component {
   };
   render() {
     return (
-      <div className="App">
-        <header id="header">
-          <Link to="/">
-            <img src={logo} alt="northcoders logo" id="logo" />
-          </Link>
-          <h1 className="title">{"<NC NEWS />"}</h1>
-          <div id="loginRegisterButtons">
-            <button>login</button>
-            <button>register</button>
+      <MyContext.Provider
+        value={{
+          _id: "5b1a41b59fc0cc849fb96b53",
+          username: "tickle122"
+        }}
+      >
+        <div className="App">
+          <header id="header">
+            <Link to="/">
+              <img src={logo} alt="northcoders logo" id="logo" />
+            </Link>
+            <h1 className="title">{"<NC NEWS />"}</h1>
+            <div id="loginRegisterButtons">
+              <button>login</button>
+              <button>register</button>
+            </div>
+          </header>
+          <Switch>
+            <Route path="/topic/:topicslug" component={ArticleList} />
+            <Route
+              path="/article/:article_id"
+              render={props => <Article {...props} />}
+            />
+            <Route path="/404" component={FourOhFour} />
+            <Route exact path="/" render={() => <ArticleList />} />
+            <Route path="/*" component={FourOhFour} />
+          </Switch>
+
+          <div>
+            <Topics />
           </div>
-        </header>
-
-        <Route exact path="/" render={() => <ArticleList />} />
-        <Route path="/topic/:topicslug" component={ArticleList} />
-        <Route path="/404" component={FourOhFour} />
-        <Route
-          path="/article/:article_id"
-          render={props => (
-            <Article {...props} currentUser={this.state.currentUser} />
-          )}
-        />
-
-        <div>
-          <Topics />
         </div>
-      </div>
+      </MyContext.Provider>
     );
   }
 }

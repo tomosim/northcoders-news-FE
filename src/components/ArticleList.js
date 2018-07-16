@@ -60,7 +60,7 @@ class ArticleList extends Component {
                 </Link>
                 <div className="userAndTopic">
                   <h4>comments: {article.comments}</h4>
-                  <h4>
+                  <h4 className="author">
                     {article.created_by}
                     {" // "}
                     {article.belongs_to}

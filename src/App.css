@@ -105,6 +105,10 @@ p {
   margin: 10px 0;
 }
 
+.author {
+  text-align: right;
+}
+
 .articleTitle {
   color: rgb(252, 112, 56);
   text-decoration: none;
@@ -153,12 +157,21 @@ p {
 }
 
 #up {
-  color: rgb(144, 233, 255);
+  color: rgb(156, 156, 156);
 }
 
 #down {
   margin-top: 5px;
-  color: rgb(255, 121, 111);
+  color: rgb(156, 156, 156);
+}
+
+#upblue {
+  color: rgb(71, 218, 255);
+}
+
+#downred {
+  margin-top: 5px;
+  color: rgb(255, 72, 59);
 }
 
 #up:hover {

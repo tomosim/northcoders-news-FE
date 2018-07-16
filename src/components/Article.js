@@ -3,6 +3,7 @@ import * as api from "../api";
 import Votes from "./Votes";
 import Comments from "./Comments";
 import { Redirect } from "react-router-dom";
+import MyContext from "../Context";
 
 class Article extends Component {
   state = { article: {}, invalidURL: false };
@@ -55,10 +56,14 @@ class Article extends Component {
                 <p>{this.state.article.body}</p>
               </div>
             </div>
-            <Comments
-              currentUser={this.props.currentUser}
-              article_id={this.props.match.params.article_id}
-            />
+            <MyContext.Consumer>
+              {user => (
+                <Comments
+                  article_id={this.props.match.params.article_id}
+                  currentUser={user}
+                />
+              )}
+            </MyContext.Consumer>
           </div>
         </div>
       );

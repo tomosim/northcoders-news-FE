@@ -7,18 +7,10 @@ class Sidebar extends Component {
 
   componentDidMount() {
     this.fetchTopics();
-    window.addEventListener("scroll", () => this.handleScroll());
   }
-
-  componentWillMount() {}
 
   fetchTopics = () => {
     api.fetchAllTopics().then(topics => this.setState({ topics: topics }));
-  };
-
-  handleScroll = () => {
-    console.log("scroll");
-    // this.setState({ moved: "moved" });
   };
 
   render() {

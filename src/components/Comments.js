@@ -3,6 +3,7 @@ import * as api from "../api";
 import Votes from "./Votes";
 import PostComment from "./PostComment.js";
 import menuButton from "../assets/menu.png";
+import MyContext from "../Context";
 
 class Comments extends Component {
   state = { comments: [], clicked: [], lastClick: "" };
@@ -23,7 +24,6 @@ class Comments extends Component {
   fetchComments = () => {
     api.fetchCommentsByArticle(this.props.article_id).then(comments => {
       this.setState({ comments: comments });
-      console.log(comments);
     });
   };
 
@@ -68,22 +68,28 @@ class Comments extends Component {
     });
   };
 
-  deleteComment = commentId => {
-    api
-      .deleteComment(commentId)
-      .then(alert("comment deleted"))
-      .then(() => this.fetchComments());
+  deleteComment = (commentId, userId) => {
+    userId === this.props.currentUser._id
+      ? api
+          .deleteComment(commentId)
+          .then(alert("comment deleted"))
+          .then(() => this.fetchComments())
+      : alert("You can only delete your own omments, silly!");
   };
 
   render() {
     return (
       <div id="comments">
         <h2>Comments:</h2>
-        <PostComment
-          article_id={this.props.article_id}
-          currentUser={this.props.currentUser}
-          postComment={this.postComment}
-        />
+        <MyContext.Consumer>
+          {user => (
+            <PostComment
+              article_id={this.props.article_id}
+              postComment={this.postComment}
+              currentUser={user}
+            />
+          )}
+        </MyContext.Consumer>
         {this.state.comments.map((comment, index) => (
           <div key={comment._id} className="commentCard">
             <Votes
@@ -103,7 +109,9 @@ class Comments extends Component {
               />
               <a
                 className={`dropdownContent ${this.state.clicked[index]}`}
-                onClick={() => this.deleteComment(comment._id)}
+                onClick={() =>
+                  this.deleteComment(comment._id, comment.created_by._id)
+                }
               >
                 delete
               </a>

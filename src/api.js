@@ -45,3 +45,7 @@ export const deleteComment = comment_id => {
     .delete(`${URL}/comments/${comment_id}`)
     .then(res => console.log(res));
 };
+
+export const fetchAllUsers = () => {
+  return axios.get(`${URL}/users`).then(res => res.data);
+};
