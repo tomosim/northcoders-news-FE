@@ -10,9 +10,6 @@ import logo from "./assets/logo_orange.png";
 import MyContext from "./Context";
 
 class App extends Component {
-  state = {
-    currentUser: { _id: "5b1a41b59fc0cc849fb96b53", username: "tickle122" }
-  };
   render() {
     return (
       <MyContext.Provider
@@ -33,13 +30,10 @@ class App extends Component {
             </div>
           </header>
           <Switch>
-            <Route path="/topic/:topicslug" component={ArticleList} />
-            <Route
-              path="/article/:article_id"
-              render={props => <Article {...props} />}
-            />
+            <Route exact path="/topic/:topicslug" component={ArticleList} />
+            <Route path="/article/:article_id" component={Article} />
             <Route path="/404" component={FourOhFour} />
-            <Route exact path="/" render={() => <ArticleList />} />
+            <Route exact path="/" component={ArticleList} />
             <Route path="/*" component={FourOhFour} />
           </Switch>
 

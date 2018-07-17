@@ -23,7 +23,7 @@ class ArticleList extends Component {
 
   fetchArticles = async () => {
     try {
-      const articles = this.props.match
+      const articles = this.props.match.params.topicslug
         ? await api.fetchArticlesByTopic(this.props.match.params.topicslug)
         : await api.fetchAllArticles();
       this.setState({ articles: articles });
