@@ -1,6 +1,6 @@
 # My Northcoder's News Frontend
 
-This is the front end element to a larger project I've created. Please refer to the [backed api here](http://northcoders-news-api.herokuapp.com/).
+This is the front end element to a larger project I've created. Please refer to the [back end api here](http://northcoders-news-api.herokuapp.com/).
 
 Northcoder's News is a reddit style social media platform that displays content in the for of articles which are sorted by topics. Users can interact with the articles by commenting on them as well as up/down voting them. Users can also vote on specific comments and even delete their own.
 
